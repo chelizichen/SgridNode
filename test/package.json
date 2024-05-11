@@ -1,25 +1,21 @@
 {
-  "name": "sgridnode",
-  "version": "0.0.5",
-  "description": "SgridFramework Node Implementation, provide a lib to init SgridServer",
-  "main": "build/main.js",
-  "types": "build/main.d.ts",
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"tsc --project tsconfig.json"
+    "dev": "ts-node-dev --respawn --transpile-only app.ts",
+    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write .",
+    "build": "tsc"
   },
-  "exports": {
-    "./*": {
-      "types":"./*.d.ts",
-      "import":"./*.js",
-      "default":"./*.js",
-      "require":"./*.js"
-    }
-  },
-  "keywords": ["SgridFramework","typescript","node","express","decorator","ioc"],
-  "author": "chelizichen",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "sgridnode": "^0.0.5",
+    "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "express": "^4.18.3",
     "express-validator": "^7.0.1",

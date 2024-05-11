@@ -1,6 +1,6 @@
 {
   "name": "sgridnode",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "SgridFramework Node Implementation, provide a lib to init SgridServer",
   "main": "build/main.js",
   "types": "build/main.d.ts",

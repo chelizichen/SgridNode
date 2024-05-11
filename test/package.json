@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sgridnode": "^0.0.5",
+    "sgridnode": "^0.0.6",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "express": "^4.18.3",

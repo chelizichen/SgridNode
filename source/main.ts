@@ -1,5 +1,6 @@
 import { NewSgridServerCtx, NewSgridServer, GetThreadLock } from "./lib";
 import { Controller, Get, Post, PreHandle } from "./lib/decorator/h";
+import { Component, Autowired } from "./lib/decorator/di";
 import { dbRsu2Vo, dto2tableFields, FMT_DAY, Now, Resp } from "./lib/utils";
 /**
  * About Sgrid Framework
@@ -10,6 +11,11 @@ export { NewSgridServerCtx, NewSgridServer, GetThreadLock };
  * About Http Controller
  */
 export { Controller, Get, Post, PreHandle };
+
+/**
+ * About DI
+ */
+export { Component, Autowired };
 
 /**
  * About Storage

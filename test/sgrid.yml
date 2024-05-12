@@ -1,5 +1,5 @@
 server:
-  name: SgirdCloud
+  name: SgridNodeDemoServer
   host: 127.0.0.1
   port: 15425
   protoccol: http

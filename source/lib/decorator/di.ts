@@ -1,3 +1,6 @@
+/**
+ * @description Ioc
+ */
 const AutowiredContainer = new WeakMap()
 
 export function Component(){

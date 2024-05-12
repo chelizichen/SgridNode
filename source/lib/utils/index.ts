@@ -9,6 +9,7 @@ export function parseSimpConf(): SimpConf {
   const SGRID_CONFIG = process.env.SGRID_CONFIG;
   if (SGRID_CONFIG && SGRID_CONFIG.length > 0) {
     const conf = yaml.load(SGRID_CONFIG) as SimpConf;
+    process.env.SGRID_CONFIG = JSON.stringify(conf)
     return conf;
   }
   const isProd = process.env.SGRID_PRODUCTION;
@@ -18,6 +19,7 @@ export function parseSimpConf(): SimpConf {
   const confPath = path.join(rootPath as string, fileName);
   const content = readFileSync(confPath, "utf-8");
   const conf = yaml.load(content) as SimpConf;
+  process.env.SGRID_CONFIG = JSON.stringify(conf)
   return conf;
 }
 

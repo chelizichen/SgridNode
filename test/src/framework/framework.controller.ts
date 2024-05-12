@@ -1,15 +1,15 @@
 import { NextFunction,Request,Response,Express,Router } from "express";
-import { Controller, Get } from "sgridnode/build/main";
+import { Controller, Get, Autowired } from "sgridnode/build/main";
 import { FrameworkService } from "./framework.service";
-import { Autowired } from "sgridnode/build/main";
-
+import { Value } from 'sgridnode/build/lib/decorator/f'
 @Controller('/framework')
 class FrameworkController{
     public ctx :Express
     public router: Router | undefined
 
     @Autowired(FrameworkService) frameworkService : FrameworkService
-    
+    @Value("server.name") serverName:string
+
     constructor(ctx:Express){
         this.ctx = ctx
         this.frameworkService = new FrameworkService()
@@ -17,7 +17,7 @@ class FrameworkController{
 
     @Get("/hello")
     async hello(req:Request,res:Response,next:NextFunction) {
-        res.send("hello " + this.frameworkService.greet())
+        res.send(this.serverName +  " :: hello ::" + this.frameworkService.greet())
     }
 }
 

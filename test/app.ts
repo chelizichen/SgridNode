@@ -12,12 +12,3 @@ function boost(){
 }
 
 boost()
-
-process.on("uncaughtException", (err) => {
-    console.error(err)
-  })
-  
-  process.on("unhandledRejection", (reason, p) => {
-    console.error(reason, p)
-  })
-  

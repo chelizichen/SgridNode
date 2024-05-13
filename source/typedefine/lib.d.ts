@@ -30,3 +30,6 @@ type UnderlineCase<Str extends string> =
   Str extends `${infer First}${infer Upper}${infer Rest}`
     ? `${UnderlineChar<First>}${UnderlineChar<Upper>}${UnderlineCase<Rest>}`
     : Str;
+
+  
+type ErrorHand = (e :Error)=>any

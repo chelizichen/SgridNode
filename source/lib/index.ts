@@ -24,7 +24,3 @@ export function NewSgridServer(ctx: Express) {
     console.log("server started at localhost:" + port);
   });
 }
-
-export function GetThreadLock() {
-  return process.env[f_env.ENV_SGRID_SERVER_INDEX] == "1";
-}

@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response, Express, Router } from "express";
-import { Controller, Get, Autowired } from "sgridnode/build/main";
+import { Controller, Get, Autowired,Value,WithErrorHandler } from "sgridnode/build/main";
+import { Request, Response, Express, Router } from "express";
 import { FrameworkService } from "./framework.service";
-import { Value } from "sgridnode/build/lib/decorator/f";
 import loggerComponent from "../components/logger";
+import { Handler } from "../interceptor/error";
 @Controller("/framework")
 class FrameworkController {
     public ctx: Express;
@@ -17,9 +17,9 @@ class FrameworkController {
         this.ctx = ctx;
         this.frameworkService = new FrameworkService();
     }
-
     @Get("/hello")
-    async hello(req: Request, res: Response, next: NextFunction) {
+    @WithErrorHandler(Handler)
+    async hello(req: Request, res: Response) {
         this.logger.data("req.url ", req.url);
         res.send(this.serverName + " :: hello ::" + this.frameworkService.greet());
     }

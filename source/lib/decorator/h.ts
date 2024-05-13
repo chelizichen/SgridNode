@@ -1,9 +1,9 @@
 import _ from "lodash"
-import { Router, Express, NextFunction, Request, Response } from "express"
+import { Router, Express, Request, Response } from "express"
 ;(Symbol as unknown as { metadata: symbol }).metadata ??=
   Symbol("Symbol.metadata")
 
-type handle = (req: Request, res: Response, next: NextFunction) => void
+type handle = (req: Request, res: Response) => void
 
 export const CONSTANT = {
   INTERFACE: "____sgrid@interface____",

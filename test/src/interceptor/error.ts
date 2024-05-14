@@ -1,13 +1,16 @@
-import { Resp } from "sgridnode/build/main"
+import { Resp } from "sgridnode/build/main";
+import { validationResult } from "express-validator";
+import { Response } from "express";
 
-export function errorHandler() {
-  return (err, req, res, next) => {
-    console.log("兜底日志 :: errorHandler", err) // 兜底日志
-    res.json(Resp.Error(-13001, err.message, null))
-  }
+export function Handler(e: Error) {
+  return Resp.Error(-9999, e.message, null);
 }
 
-export function Handler(e:Error){
-  console.log('eh',e.message);
-  return e.message;
+export function validateMiddleWare(req, res: Response, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.json(Resp.Error(-1, "validateError", errors.array()));
+    return res.end();
+  }
+  next();
 }

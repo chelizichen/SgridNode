@@ -1,6 +1,6 @@
 import _ from "lodash";
 import e, { Router, Express, Request, Response } from "express";
-import { errorMap } from "./e";
+// import { errorMap } from "./e";
 
 (Symbol as unknown as { metadata: symbol }).metadata ??=
   Symbol("Symbol.metadata");
@@ -109,23 +109,7 @@ function setHandleFunc(r, context, value) {
     rm.set(r, []);
   }
   const rr = rm.get(r);
-  const errorHandleFunc = errorMap.get(context.name);
-  rr.push(async function (req, res) {
-    try {
-      const data = await value(req, res);
-      res.json(data);
-    } catch (e) {
-      if (errorHandleFunc) {
-        const errHandleResp = errorHandleFunc(e);
-        res.json(errHandleResp);
-      } else {
-        res.json({
-          code: -10001,
-          message: "@sgrid/node unhandle error",
-        });
-      }
-    }
-  });
+  rr.push(value);
 }
 
 function setSingaleMap(r, context, value): Map<string, string> {

@@ -5,11 +5,20 @@ import { camelCase } from "lodash";
 import dayjs from "dayjs";
 import { dates } from "../constant";
 
-export function parseSimpConf(): SimpConf {
+/**
+ * @desc
+ * 该函数用于加载SGridCloud运行时配置 ,
+ * 中心配置由 process.env.SGRID_CONFIG 提供 ,
+ * SGRID_TARGET_PORT 为提供的监听端口，在绑定时需要使用该端口，以免发生端口冲突问题
+ * @info
+ * 如果不使用 NewSgridServerCtx 启动服务，只想获得 中心配置的的功能，
+ * 并且配置到 SgridCloud上时，可以使用该函数
+ */
+export function LoadSgridConf(): SimpConf {
   const SGRID_CONFIG = process.env.SGRID_CONFIG;
   if (SGRID_CONFIG && SGRID_CONFIG.length > 0) {
     const conf = yaml.load(SGRID_CONFIG) as SimpConf;
-    process.env.SGRID_CONFIG = JSON.stringify(conf)
+    process.env.SGRID_CONFIG = JSON.stringify(conf);
     return conf;
   }
   const isProd = process.env.SGRID_PRODUCTION;
@@ -19,7 +28,7 @@ export function parseSimpConf(): SimpConf {
   const confPath = path.join(rootPath as string, fileName);
   const content = readFileSync(confPath, "utf-8");
   const conf = yaml.load(content) as SimpConf;
-  process.env.SGRID_CONFIG = JSON.stringify(conf)
+  process.env.SGRID_CONFIG = JSON.stringify(conf);
   return conf;
 }
 

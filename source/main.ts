@@ -1,11 +1,16 @@
 import { NewSgridServerCtx, NewSgridServer } from "./lib";
 import { Controller, Get, Post, PreHandle } from "./lib/decorator/h";
 import { Component, Autowired } from "./lib/decorator/di";
-import { dbRsu2Vo, dto2tableFields, FMT_DAY, Now, Resp } from "./lib/utils";
+import {
+  dbRsu2Vo,
+  dto2tableFields,
+  FMT_DAY,
+  Now,
+  Resp,
+  LoadSgridConf,
+} from "./lib/utils";
 import { ThreadLock, WithThreadLock } from "./lib/decorator/l";
 import { Value } from "./lib/decorator/f";
-import { WithErrorHandler } from "./lib/decorator/e";
-import { WithStatic } from "./lib/decorator/st";
 import * as SyncPool from "./sync/index";
 /**
  * About Sgrid Framework
@@ -37,8 +42,6 @@ export { ThreadLock, WithThreadLock };
  */
 export { Value };
 
-export { WithErrorHandler };
-
-export { WithStatic };
-
 export { SyncPool };
+
+export { LoadSgridConf };

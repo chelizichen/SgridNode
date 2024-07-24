@@ -9,7 +9,6 @@ npm run build
 cp ./sgrid.yml ./build/
 cp package.json ./build/
 cp package-lock.json ./build/
-
 cd build 
 npm i --production
 

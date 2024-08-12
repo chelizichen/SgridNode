@@ -12,6 +12,8 @@ import {
 import { ThreadLock, WithThreadLock } from "./lib/decorator/l";
 import { Value } from "./lib/decorator/f";
 import * as SyncPool from "./sync/index";
+import notify from "./framework";
+
 /**
  * About Sgrid Framework
  */
@@ -45,3 +47,5 @@ export { Value };
 export { SyncPool };
 
 export { LoadSgridConf };
+
+export { notify };

@@ -33,17 +33,17 @@ export function LoadSgridConf(): SimpConf {
 }
 
 export function dto2tableFields<T = Record<string, unknown>>(dto): T {
-  const tableRecord: T = {};
+  const tableRecord = {} as T;
   for (const key in dto) {
     const field_name = key.replace(/([A-Z])/g, "_$1").toLowerCase();
     tableRecord[field_name] = dto[key];
   }
-  return tableRecord;
+  return tableRecord as T;
 }
 
 export function dbRsu2Vo<T>(rsu): T {
   if (rsu === null || rsu === undefined) {
-    return {};
+    return {} as T;
   }
   if (rsu instanceof Array) {
     return rsu.map((element) => {
@@ -53,14 +53,14 @@ export function dbRsu2Vo<T>(rsu): T {
         tableRecord[field_name] = element[key];
       }
       return tableRecord;
-    });
+    }) as T;
   } else {
     const tableRecord = {};
     for (const key in rsu) {
       const field_name = camelCase(key);
       tableRecord[field_name] = rsu[key];
     }
-    return tableRecord;
+    return tableRecord as T;
   }
 }
 

@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 /** 
  @method notify
  框架告警，由于框架自身原因，暂时需要手动输入 target 来确保消息能正确推到日志中

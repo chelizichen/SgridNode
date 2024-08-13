@@ -1,12 +1,12 @@
 import express, { Express } from "express";
 import { NewError, f_env } from "./constant";
-import { LoadSgridConf } from "./utils";
+import { loadSgridConf } from "./utils/conf";
 import _ from "lodash";
 
 export function NewSgridServerCtx(): Express {
   const app = express();
   app.use(express.json());
-  const conf = LoadSgridConf();
+  const conf = loadSgridConf();
   const port = process.env[f_env.ENV_SGRID_TARGET_PORT] || conf.server.port;
   try {
     console.log("conf", JSON.stringify(conf));

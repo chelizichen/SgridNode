@@ -1,12 +1,14 @@
-import { Autowired, Component } from "sgridnode/build/main";
+import { Autowired, Component, Value } from "../../../source/main";
 import loggerComponent from "../components/logger";
 
 @Component()
 export class FrameworkService {
   @Autowired(loggerComponent) logger: loggerComponent;
+  @Value("server.name") serverName: string;
 
   constructor() {
     console.log("framework service init");
+    console.log("this.serverName", this.serverName);
   }
 
   msg = "greet";

@@ -1,4 +1,4 @@
-import { Resp } from "sgridnode/build/main";
+import { Resp } from "../../../source/main";
 import { validationResult } from "express-validator";
 import { Response } from "express";
 

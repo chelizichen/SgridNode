@@ -1,21 +1,26 @@
-import lodash from 'lodash'
-;import { f_env } from '../constant';
-(Symbol as unknown as { metadata: symbol }).metadata ??= Symbol("Symbol.metadata")
+import lodash from "lodash";
+import { config, loadSgridConf } from "../utils/conf";
 
-function Value(key:string,defaultVal?:string){
-    return function(val,ctx:ClassFieldDecoratorContext){
-        if(ctx.kind !== "field"){
-            throw new Error("sgrid/node/error " + ctx.kind + " must be field")
-        }
-        return function(){
-            const conf = process.env[f_env.ENV_SGRID_CONFIG]
-            const toConf = JSON.parse(conf)
-            return lodash.get(toConf,key,defaultVal)
-        }        
+(Symbol as unknown as { metadata: symbol }).metadata ??=
+  Symbol("Symbol.metadata");
+
+function Value(key: string, defaultVal?: string) {
+  return function (val, ctx: ClassFieldDecoratorContext) {
+    if (ctx.kind !== "field") {
+      throw new Error("sgrid/node/error " + ctx.kind + " must be field");
     }
+    return function () {
+      if (!config.loaded) {
+        loadSgridConf();
+        return getConfValue(key, defaultVal);
+      }
+      return getConfValue(key, defaultVal);
+    };
+  };
 }
 
-export {
-    Value
+function getConfValue(key: string, defaultVal?: string) {
+  return lodash.get(config.conf, key, defaultVal);
 }
 
+export { Value, getConfValue };

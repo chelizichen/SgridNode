@@ -1,5 +1,3 @@
-import { FrameworkController } from "./framework/framework.controller"
+import { FrameworkController } from "./framework/framework.controller";
 
-export {
-    FrameworkController
-}
+export { FrameworkController };

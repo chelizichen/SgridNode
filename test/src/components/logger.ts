@@ -1,27 +1,30 @@
-import { Component } from "sgridnode/build/main";
+import { Component, Value } from "../../../source/main";
 
 @Component()
-class loggerComponent{
-    constructor(){
-        process.on("uncaughtException", (err) => {
-            this.error(err)
-        })
-        
-        process.on("unhandledRejection", (reason, p) => {
-            this.error(reason, p)
-        })
-    }
-    info(...args){
-        console.log('loggerComponent :: info :: ',...args)
-    }
+class loggerComponent {
+  @Value("server.name") serverName: string;
 
-    data(...args){
-        console.log('loggerComponent :: data :: ',...args)
-    }
+  constructor() {
+    process.on("uncaughtException", (err) => {
+      this.error(err);
+    });
 
-    error(...args){
-        console.log('loggerComponent :: error ::',...args)
-    }
+    process.on("unhandledRejection", (reason, p) => {
+      this.error(reason, p);
+    });
+    console.log("this.serverName", this.serverName);
+  }
+  info(...args) {
+    console.log("loggerComponent :: info :: ", ...args);
+  }
+
+  data(...args) {
+    console.log("loggerComponent :: data :: ", ...args);
+  }
+
+  error(...args) {
+    console.log("loggerComponent :: error ::", ...args);
+  }
 }
 
-export default loggerComponent
+export default loggerComponent;

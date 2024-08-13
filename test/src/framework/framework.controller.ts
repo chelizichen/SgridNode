@@ -1,4 +1,4 @@
-import { Controller, Get, Autowired, Value, Resp } from "sgridnode/build/main";
+import { Controller, Get, Autowired, Value, Resp } from "../../../source/main";
 import { Request, Response, Express, Router } from "express";
 import { FrameworkService } from "./framework.service";
 import loggerComponent from "../components/logger";
@@ -16,6 +16,7 @@ class FrameworkController {
 
   constructor(ctx: Express) {
     this.ctx = ctx;
+    console.log("this.serverame", this.serverName);
   }
 
   @Get("/hello")
@@ -38,14 +39,9 @@ class FrameworkController {
 
   @Get("/version")
   async version(req: Request, res: Response) {
-    const pkg = require(path.resolve(cwd(),'package.json'))
-    res.json(
-      Resp.Ok(
-        pkg.version
-      )
-    );
+    const pkg = require(path.resolve(cwd(), "package.json"));
+    res.json(Resp.Ok(pkg.version));
   }
-  
 }
 
 export { FrameworkController };

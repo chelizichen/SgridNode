@@ -1,4 +1,4 @@
-interface SimpConf {
+interface SGRID_CONF {
   server: {
     name: string;
     port: number;
@@ -31,5 +31,4 @@ type UnderlineCase<Str extends string> =
     ? `${UnderlineChar<First>}${UnderlineChar<Upper>}${UnderlineCase<Rest>}`
     : Str;
 
-  
-type ErrorHand = (e :Error)=>any
+type ErrorHand = (e: Error) => any;

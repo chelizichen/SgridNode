@@ -7,6 +7,7 @@ export function Handler(e: Error) {
 }
 
 export function validateMiddleWare(req, res: Response, next) {
+  console.log("this.validateMiddleWare", this.serverName);
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.json(Resp.Error(-1, "validateError", errors.array()));

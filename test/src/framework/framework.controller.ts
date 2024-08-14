@@ -4,6 +4,7 @@ import { FrameworkService } from "./framework.service";
 import loggerComponent from "../components/logger";
 import { cwd } from "process";
 import path from "path";
+import { validateMiddleWare } from "../interceptor/error";
 @Controller("/framework")
 class FrameworkController {
   public ctx: Express;
@@ -37,7 +38,7 @@ class FrameworkController {
     );
   }
 
-  @Get("/version")
+  @Get("/version", validateMiddleWare)
   async version(req: Request, res: Response) {
     const pkg = require(path.resolve(cwd(), "package.json"));
     res.json(Resp.Ok(pkg.version));

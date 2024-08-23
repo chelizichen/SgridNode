@@ -3,7 +3,7 @@ import { Controller, Get, Post } from "./lib/decorator/h";
 import { Component, Autowired } from "./lib/decorator/di";
 import { dbRsu2Vo, dto2tableFields, FMT_DAY, Now, Resp } from "./lib/utils";
 import { ThreadLock, WithThreadLock } from "./lib/decorator/l";
-import { Value } from "./lib/decorator/f";
+import { Value, getConfValue } from "./lib/decorator/f";
 import * as SyncPool from "./sync/index";
 import notify from "./framework";
 import { loadSgridConf } from "./lib/utils/conf";
@@ -36,7 +36,7 @@ export { ThreadLock, WithThreadLock };
 /**
  * About Framework Like Spring
  */
-export { Value };
+export { Value, getConfValue };
 
 export { SyncPool };
 

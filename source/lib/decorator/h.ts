@@ -1,7 +1,6 @@
 import _ from "lodash";
-import e, { Router, Express, Request, Response, NextFunction } from "express";
+import { Router, Express, Request, Response, NextFunction } from "express";
 import { error } from "console";
-// import { errorMap } from "./e";
 
 (Symbol as unknown as { metadata: symbol }).metadata ??=
   Symbol("Symbol.metadata");

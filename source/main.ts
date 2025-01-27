@@ -4,10 +4,9 @@ import { Component, Autowired } from "./lib/decorator/di";
 import { dbRsu2Vo, dto2tableFields, FMT_DAY, Now, Resp } from "./lib/utils";
 import { ThreadLock, WithThreadLock } from "./lib/decorator/l";
 import { Value, getConfValue } from "./lib/decorator/f";
-import * as SyncPool from "./sync/index";
 import notify from "./framework";
 import { loadSgridConf } from "./lib/utils/conf";
-
+import { Logger } from "./lib/utils/logger";
 /**
  * About Sgrid Framework
  */
@@ -38,8 +37,8 @@ export { ThreadLock, WithThreadLock };
  */
 export { Value, getConfValue };
 
-export { SyncPool };
-
 export { loadSgridConf };
 
 export { notify };
+
+export { Logger }; 
